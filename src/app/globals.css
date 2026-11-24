@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * デザイントークン（Figma「クレーム管理システム — UIデザイン」より）
+ */
+:root {
+  --radius: 0.875rem;
+
+  /* iPhone のノッチ・ホームバー（ホーム画面から開いたとき） */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --header-h: calc(3.5rem + var(--safe-top));
+
+  /* ブランド */
+  --navy: #14284b;
+  --navy-2: #1f3a68;
+  --navy-deep: #0f2c57;
+  --gold: #b8912f;
+
+  /* 面・文字 */
+  --background: #ffffff;
+  /* C：白い画面の上で使う面・区切り */
+  --sunken: #f5f6f8;
+  --chip: #f3f4f7;
+  --divider: #f0f1f4;
+  --avatar: #eef1f6;
+  --foreground: #1b2030;
+  --card: #ffffff;
+  --card-foreground: #1b2030;
+  --popover: #ffffff;
+  --popover-foreground: #1b2030;
+  --muted: #f3f4f7;
+  --muted-foreground: #5f6675;
+  --border: #eef0f3;
+  --input: #eef0f3;
+  --ring: #1f3a68;
+
+  /* shadcn 互換 */
+  --primary: var(--navy);
+  --primary-foreground: #ffffff;
+  --secondary: #e3e6ec;
+  --secondary-foreground: #1b2030;
+  --accent: #d6e3ff;
+  --accent-foreground: #0f2c57;
+  --destructive: #ba1a1a;
+
+  /* ステータス */
+  --st-received-bg: #d6e3ff;
+  --st-received: #0f2c57;
+  --st-progress-bg: #fff3e0;
+  --st-progress: #e65100;
+  --st-pending-bg: #ede7f6;
+  --st-pending: #4527a0;
+  --st-done-bg: #e8f5e9;
+  --st-done: #1b5e20;
+  --st-returned-bg: #ffebee;
+  --st-returned: #b71c1c;
+
+  /* 緊急度 */
+  --urg-high: #d32f2f;
+  --urg-mid: #f57c00;
+  --urg-low: #388e3c;
+
+  --approve: #2e7d32;
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans-jp), ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+
+  --color-sunken: var(--sunken);
+  --color-chip: var(--chip);
+  --color-divider: var(--divider);
+  --color-avatar: var(--avatar);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-navy-deep: var(--navy-deep);
+  --color-gold: var(--gold);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-st-received-bg: var(--st-received-bg);
+  --color-st-received: var(--st-received);
+  --color-st-progress-bg: var(--st-progress-bg);
+  --color-st-progress: var(--st-progress);
+  --color-st-pending-bg: var(--st-pending-bg);
+  --color-st-pending: var(--st-pending);
+  --color-st-done-bg: var(--st-done-bg);
+  --color-st-done: var(--st-done);
+  --color-st-returned-bg: var(--st-returned-bg);
+  --color-st-returned: var(--st-returned);
+
+  --color-urg-high: var(--urg-high);
+  --color-urg-mid: var(--urg-mid);
+  --color-urg-low: var(--urg-low);
+  --color-approve: var(--approve);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    /* アプリらしく：画面全体のバウンスを止める */
+    overscroll-behavior: none;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-tap-highlight-color: transparent;
+    /* ダブルタップでの拡大を無効にし、タップの反応を速くする */
+    touch-action: manipulation;
+  }
+  /* アイコンの線を細く（lucide の既定は 2） */
+  .lucide {
+    stroke-width: 1.5;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
