@@ -130,8 +130,8 @@ export function DemoStoreProvider({ children }: { children: React.ReactNode }) {
         setMeId(null);
       },
       refresh: async () => setData(load()),
-      resetDemo: () => {
-        const seed = createSeed();
+      resetDemo: (options) => {
+        const seed: Data = options?.empty ? { claims: [], notifications: [] } : createSeed();
         save(seed);
         setData(seed);
       },

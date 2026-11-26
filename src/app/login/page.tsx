@@ -178,15 +178,27 @@ function TestEnvInfo() {
         <p>Lv.2（緊急度 中）… 管理者</p>
         <p>Lv.3（緊急度 高）… 社長</p>
       </div>
-      <button
-        type="button"
-        onClick={() => {
-          if (confirm("テストデータを初期状態に戻しますか？")) resetDemo();
-        }}
-        className="mt-4 cursor-pointer text-xs text-muted-foreground underline"
-      >
-        テストデータをリセット
-      </button>
+      <div className="mt-4 flex gap-4">
+        <button
+          type="button"
+          onClick={() => {
+            if (confirm("テストデータを初期状態に戻しますか？")) resetDemo();
+          }}
+          className="cursor-pointer text-xs text-muted-foreground underline"
+        >
+          テストデータをリセット
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            if (confirm("報告と通知をすべて削除して、空の状態から始めますか？（テスト用アカウントは残ります）"))
+              resetDemo({ empty: true });
+          }}
+          className="cursor-pointer text-xs text-muted-foreground underline"
+        >
+          空の状態から始める
+        </button>
+      </div>
     </>
   );
 }

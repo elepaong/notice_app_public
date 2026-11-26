@@ -36,8 +36,8 @@ export type Store = {
   authError: string | null;
   logout: () => Promise<void>;
   refresh: () => Promise<void>;
-  /** デモ：データを初期化 */
-  resetDemo: () => void;
+  /** デモ：データを初期化（empty: true ならアカウント以外を空にする） */
+  resetDemo: (options?: { empty?: boolean }) => void;
 
   createClaim: (input: NewClaimInput) => Promise<Claim>;
   assignToMe: (claimId: string) => Promise<void>;
